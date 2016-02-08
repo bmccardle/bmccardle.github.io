@@ -2,7 +2,7 @@
 layout: post
 title: Oblique Meridian
 ---
-
+Test
 The approximate power on the vertical meridian for the Rx +3.00 -1.50 x 102 is?
 
 Vertical meridian is the power in the 90th meridian. First we need to subtract our axis(102 in this problem) from the meridian we are looking for(90 in this problem). This will be $\alpha$ in our oblique meridian formula.
