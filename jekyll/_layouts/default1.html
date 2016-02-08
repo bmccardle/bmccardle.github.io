@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>{{ site.name }}</title>
+<link rel="stylesheet" href="css/style.css" media="screen" />
+
+<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    showProcessingMessages: false,
+    tex2jax: { inlineMath: [['$','$'],['\\(','\\)']] }
+  });
+</script>
+
+
+</head>
+<body class="home blog">
+
+<div id="pagewrap">
+  <header id="header">
+    <div id="nav">
+
+      <a title="Home" class="tw" href="/"><img src="http://dddqpqcwu46jj.cloudfront.net/blog-images/brent.png" width="500" height="500"/>
+</a>
+
+      <ul>
+        <li class="articles"><a title="Articles" href="/category/articles">Articles</a></li>
+        <li class="notes"><a title="Notes" href="/category/notes/">Notes</a></li>
+        <li class="info"><a title="Info" href="/info">Info</a></li>
+        <li class="search"><a title="Search"  href="/search/">Search</a></li>
+      </ul>
+    </div>
+  </header>
+
+    <section class="content">
+      <div class="centered">
+        <!--<h3>I’m a designer and web builder who works with two of my best friends at&nbsp;<a href="http://paravelinc.com">Paravel</a>.</h3>-->
+
+       
+
+        <ul class="bio-recently col-2">
+          
+              
+              {{ content }}
+         
+        </ul>
+        
+      </div>
+
+
+
+    </section>
+
+
+
+
+
+
+</div><!-- end pagewrap -->
+</body>
+</html>
+

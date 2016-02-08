@@ -1,0 +1,109 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Brent's Page</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="/brent/css/normalize.css">
+  <link rel="stylesheet" href="/brent/css/skeleton.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+</head>
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container" style="margin-top: 10%; margin-left: auto; margin-right: auto">
+	  <h4>Lens Analysis</h4>
+	  <p>If you are calculating sphere only, enter a zero value for cylinder and axis</p>
+	  <p>This will run through the most used indices in the business today.  It will give you a table with the edge thickness, center thickness, index, common index name, and the weight.</p>
+	  <p>* Please note that the weight calculation is based on spherical front and back and does not take asphericity into account</p>
+  <form action="thicknessHTML.py" method="post">
+  
+    <div class="row">
+      <div class="three columns">
+	  	<label for="sph">Sphere:</label>
+	  	<input type="text" placeholder="sphere" id="sph" name="sph"><br />
+      </div>
+      <div class="three columns">
+	  	<label for="cyl">Cylinder:</label>
+	  	<input type="text" placeholder="cylinder" id="cyl" name="cyl" />
+      </div>
+      <div class="three columns" >
+	  	<label for="axis">Axis:</label>
+	  	<input type="text" placeholder="axis" id="axis" name="axis" />
+      </div>
+    </div>
+    <div class="row">
+	    <div class="three columns" >
+	  	<label for="bc">Base Curve:</label>
+	  	<input type="text" placeholder="base curve" id="bc" name="bc" />
+      </div>
+       <div class="three columns" >
+	  	<label for="minThick">Minimum Thickness:</label>
+	  	<input type="text" placeholder="minimum thickness" id="minThick" name="minThick" />
+      </div>
+     <!-- <div class="three columns"> 
+	  	
+	  <label for="index">Index:</label>
+      <select class="u-full-width" id="index" name="index">
+        <option id="index" value="1.498">CR-39</option>
+        <option id="index" value="1.527">Trivex</option>
+        <option id="index" value="1.537">Spectralite</option>
+        <option id="index" value="1.586">Polycarbonate</option>
+        <option id="index" value="1.595">MR-6</option>
+        <option id="index" value="1.592">MR-8</option>
+        <option id="index" value="1.658">MR-7</option>
+        <option id="index" value="1.661">MR-10</option>
+        <option id="index" value="1.732">MR 174</option>
+
+      </select>
+    </div>-->
+    </div>
+    <div class="row">
+    <div class="three columns">
+	    <label for="a">A:</label>
+	    <input type="text" placeholder="A" id="a" name="a" />
+	   </div>
+	 <div class="three columns">
+		 <label for="dbl">DBL:</label>
+	    <input type="text" placeholder="DBL" id="dbl" name="dbl" />
+	    </div>
+	     <div class="three columns">
+		 <label for="pd">PD:</label>
+	    <input type="text" placeholder="monoocular pd" id="pd" name="pd" />
+	    </div>
+    </div>
+   
+	<input class="button-primary" type="submit" value="Calculate">
+    </form>
+</div>
+
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
+
+

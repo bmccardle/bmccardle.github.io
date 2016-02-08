@@ -1,0 +1,42 @@
+---
+title: Oblique Meridian
+---
+
+{% include calc-header.html %}
+
+<div class="container" style="margin-top: 50px;">
+  <form action="../oblique-meridian.py" method="post">
+  
+    <div class="row">
+      <div class="three columns">
+	  	<label for="sph">Sphere:</label>
+	  	<input type="text" placeholder="sphere" id="sph" name="sph"><br />
+      </div>
+      <div class="three columns">
+	  	<label for="cyl">Cylinder:</label>
+	  	<input type="text" placeholder="cylinder" id="cyl" name="cyl" />
+      </div>
+      <div class="three columns" >
+	  	<label for="axis">Axis:</label>
+	  	<input type="text" placeholder="axis" id="axis" name="axis" />
+      </div>
+    </div>
+    <div class="row">
+	  <div class="three columns">
+    <label for="powerAt">Power At:</label>
+	<input type="text" placeholder="power @" id="powerAt" name="powerAt" />
+	  </div>
+    </div>
+    <input class="button-primary" type="submit" value="Calculate">
+    </form>
+</div>
+</div>
+{% include footer.html %}
+
+</article>
+
+
+</body>
+</html>
+
+

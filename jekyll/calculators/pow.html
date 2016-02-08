@@ -1,0 +1,110 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Brent's Page</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="/brent/css/normalize.css">
+  <link rel="stylesheet" href="/brent/css/skeleton.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+</head>
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container" style="margin-top: 10%; margin-left: auto; margin-right: auto">
+	  <h4>Position of Wear</h4>
+	  
+  <form action="powHTML.py" method="post">
+  <div class="row">
+	   <div class="three columns"> 
+	  	
+	  <label for="eye">Eye:</label>
+      <select class="u-full-width" id="eye" name="eye">
+        <option id="eye" value="0">OD</option>
+        <option id="eye" value="1">OS</option>
+      </select>
+    </div>
+	  <div class="three columns"> 
+	  	
+	  <label for="ec">Compensated/Effective:</label>
+      <select class="u-full-width" id="ec" name="ec">
+        <option id="ec" value="0">Compensated</option>
+        <option id="ec" value="1">Effective</option>
+      </select>
+    </div> 
+  </div>
+    <div class="row">
+      <div class="three columns">
+	  	<label for="sph">Sphere:</label>
+	  	<input type="text" placeholder="sphere" id="sph" name="sph">
+      </div>
+      <div class="three columns">
+	  	<label for="cyl">Cylinder:</label>
+	  	<input type="text" placeholder="cylinder" id="cyl" name="cyl" />
+      </div>
+      <div class="three columns" >
+	  	<label for="axis">Axis:</label>
+	  	<input type="text" placeholder="axis" id="axis" name="axis" />
+      </div>
+    </div>
+    <div class="row">
+	    <div class="three columns" >
+	  	<label for="pTilt">Pantoscopic Tilt:</label>
+	  	<input type="text" placeholder="pantoscopic tilt" id="pTilt" name="pTilt" />
+      </div>
+       <div class="three columns" >
+	  	<label for="fTilt">Face Form:</label>
+	  	<input type="text" placeholder="face form" id="fTilt" name="fTilt" />
+      </div>
+     <div class="three columns"> 
+	  	
+	  <label for="index">Index:</label>
+      <select class="u-full-width" id="index" name="index">
+        <option id="index" value="1.498">CR-39</option>
+        <option id="index" value="1.527">Trivex</option>
+        <option id="index" value="1.537">Spectralite</option>
+        <option id="index" value="1.586">Polycarbonate</option>
+        <option id="index" value="1.595">MR-6</option>
+        <option id="index" value="1.592">MR-8</option>
+        <option id="index" value="1.658">MR-7</option>
+        <option id="index" value="1.661">MR-10</option>
+        <option id="index" value="1.732">MR 174</option>
+
+      </select>
+    </div>
+    </div>
+       
+	<input class="button-primary" type="submit" value="Calculate">
+    </form>
+</div>
+
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
+
+
