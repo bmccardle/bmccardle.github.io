@@ -2,7 +2,7 @@
 layout: post
 title: Understanding Prism
 ---
-
+Test
 One area of Opticianry that seems to have more Opticians baffled is prism. I hope in this short tutorial it will ease the misunderstanding of prism. This tutorial is not meant to understand every aspect of prism, it is meant to help you understand prism in your everyday setting as an Optician. In order to help us we need to think of lens as two prisms. A lens with prisms base to base is a plus lens and a lens with prisms apex to apex is a minus lens. ![plus/minus][1]
 
 This image shows a minus lens on the right and a plus lens on the left that are vertically oriented. This image is you looking at a patient, the left side is the patients right eye and the right image is the patients left eye. A minus lens has its optical center (OC) located where the apexes of the prism connect and a plus lens has its OC located where the bases of the prism connect. This image will help us determine the direction of prism, Base Up(BU) and Base Down (BD). Notice the pupil in the image, it is located below each OC. Erase the triangle that the pupil is not in or draw a new triangle. Looking at this image
