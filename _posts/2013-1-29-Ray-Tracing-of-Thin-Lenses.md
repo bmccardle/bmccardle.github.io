@@ -2,6 +2,7 @@
 layout: post
 title: Ray Tracing of Thin Lenses
 ---
+Test test
 The purpose of this article is to help those to understand how lenses work through the understanding of ray tracing. For the purpose of this discussion we are only going to deal with thin lenses. **Thin Lenses **are defined as when the central thickness of a lens is small enough, the converging and diverging properties of the lens in air are independent of the shape or form of the lens as well as the direction in which the light is traveling through the lens.1
 
 This article assumes that the reader has a basic understanding of how to convert meters to millimeters and rearrange a formula to find different values.
