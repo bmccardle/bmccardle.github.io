@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MathJax TeX Test Page</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+  
+  
+   <script type="text/javascript">
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&amp;");
+    var regex = new RegExp("[?&amp;]" + name + "(=([^&amp;#]*)|&amp;|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+</script>
+</head>
+<body>
+When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
+$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+
+  
+  <textarea class="form-control" rows="4" cols="50" id="textarea_490"></textarea>
+  
+  	<div id="MathPreview" class="preview" style="visibility: hidden; position: absolute;"></div>
+        <div id="MathBuffer" class="preview" style="top: 0px; left: 0px;">
+<script>
+var latex = decodeURI(getParameterByName('latex'));
+//document.getElementById("MathInput").focus();
+document.getElementById("textarea_490").value = latex;
+Preview.Init();
+Preview.Update();
+
+
+</script>   
+  
+   </body>
+</html>
