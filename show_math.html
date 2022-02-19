@@ -1,3 +1,25 @@
+     <html>
+  <head>
+    
+  
+  <meta name="viewport" content="width=device-width, initial-
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript">
+function convert() {
+      var input = document.getElementById("input").value.trim();
+      var display = document.getElementById("display");
+      var button = document.getElementById("render");
+      button.disabled = display.disabled = true;
+      output = document.getElementById('output');
+      output.innerHTML = '';
+      MathJax.texReset();
+      var options = MathJax.getMetricsFor(output);
+      options.display = display.checked;
+      MathJax.tex2chtmlPromise(input, options).then(function (node) {
+        output.appendChild(node);
+        MathJax.startup.document.clear();
+        MathJax.startup.document.updateDocument();
       }).catch(function (err) {
         output.appendChild(document.createElement('pre')).appendChild(document.createTextNode(err.message));
       }).then(function () {
