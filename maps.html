@@ -45,7 +45,7 @@ const feature = features[0];
 console.log(feature)
  
 const popup = new mapboxgl.Popup({ offset: [0, -15] })
-.setLngLat(feature.properties.geo_point_2d[0])
+.setLngLat(feature.geometry.coordinates[0])
 .setHTML(
 `<h3>${feature.properties.name}</h3>`
 )
