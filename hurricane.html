@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Display a map on a webpage</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet">
+<script src='https://cdn.rawgit.com/mapbox/togeojson/master/togeojson.js'></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip-utils/0.0.2/jszip-utils.js"></script>
+
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+
+</head>
+<body>
+<div id="map"></div>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiYm1jY2FyZGxlIiwiYSI6ImNqOG91YXlxbTA3emIyd3JzYjVra2lhMWYifQ.mIhEepOm5uN8lbMtC6ZR9A';
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+        center: [-100, 40], // starting position [lng, lat]
+        zoom: 4, // starting zoom
+        //projection: 'globe' // display the map as a 3D globe
+    });
+
+function addLayer(response,layerid){
+     map.addSource(layerid, {
+        "type": "geojson",
+        'data':response
+     });
+     map.addLayer({
+        "id": layerid,
+        "type": "fill",
+        "source":layerid,
+        "paint": { "fill-color":  [ "string", ["get", "fill"]]}
+     }, 'aeroway-taxiway');
+}
+
+var kmlLayers=[];
+
+    map.on('style.load', () =>  {
+        
+loadKMZ('https://www.nhc.noaa.gov/storm_graphics/api/AL122022_005adv_CONE.kmz', true)
+
+    });
+
+
+
+function loadKMZ(fileURL,show){
+    JSZipUtils.getBinaryContent(fileURL, function(err, data) {
+       if(err) {
+          console.log('error');
+           throw err; // or handle err
+        }
+
+        JSZip.loadAsync(data,{base64: false, optimizedBinaryString:true}).then(function (zip) {
+            return zip
+        }).then(function (zip) {
+           var props = Object.getOwnPropertyNames(zip["files"]);
+            var name =props[0];
+            var kmlFile=zip.file(name).async("string"); // a promise of "Hello World\n"
+            return kmlFile;          
+        }).then(function(text){
+            var parser = new DOMParser();
+            var textXML = parser.parseFromString(text, "text/xml"); //important to use "text/xml"
+            var response = toGeoJSON.kml(textXML);
+            var layerName=response.features[0].properties.name; 
+
+comsole.log(layerName)
+	    addLayer(response,layerName);
+	    
+		kmlLayers.push(layerName);
+	    
+        });
+    }); 
+}	
+</script>
+
+</body>
+</html>
