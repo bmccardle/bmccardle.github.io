@@ -73,7 +73,7 @@ function loadKMZ(fileURL,show){
             var response = toGeoJSON.kml(textXML);
             var layerName=response.features[0].properties.name; 
 
-comsole.log(layerName)
+console.log(layerName)
 	    addLayer(response,layerName);
 	    
 		kmlLayers.push(layerName);
