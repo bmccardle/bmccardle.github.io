@@ -45,7 +45,7 @@ function addLayer(response,layerid){
 
 var kmlLayers=[];
 
-    map.on('style.load', () =>  {
+    map.on('load', function()   {
         
 loadKMZ('https://www.nhc.noaa.gov/storm_graphics/api/AL122022_005adv_CONE.kmz', true)
 
