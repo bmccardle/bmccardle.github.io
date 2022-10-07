@@ -10,6 +10,8 @@
 body { margin: 0; padding: 0; }
 #map { position: absolute; top: 0; bottom: 0; width: 100%; }
 </style>
+
+
 </head>
 <body>
 <div id="map"></div>
@@ -25,27 +27,30 @@ body { margin: 0; padding: 0; }
         
     });
   
-  function translateData(){
-    
-   // https://www.nhc.noaa.gov/CurrentStorms.json
-    
-    fetch('https://www.nhc.noaa.gov/CurrentStorms.json')
-    .then(res => res.json())
+
+ 
+
+fetch('https://www.nhc.noaa.gov/CurrentStorms.json', {
+  credentials: 'omit',
+ headers: {
+    'Content-Type': 'application/json',
+  }
+})
+.then(res => res.json())
     .then((out) => {
         console.log('Output: ', out);
 }).catch(err => console.error(err));
+
     
-    
-    
-  }
   
-  translateData()
+  
 
     map.on('style.load', () => {
         map.setFog({}); // enable atmosphere and stars
     });
 
     map.on('load', () => {
+
         map.addSource('earthquakes', {
             type: 'geojson',
             // Use a URL for the value for the `data` property.
@@ -64,6 +69,8 @@ body { margin: 0; padding: 0; }
             }
         });
     });
+
+
 </script>
 
 </body>
