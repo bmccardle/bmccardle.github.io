@@ -1,61 +1,70 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>KML Click Capture Sample</title>
-    <style>
-      html, body {
-        height: 370px;
-        padding: 0;
-        margin: 0;
-        }
-      #map {
-       height: 360px;
-       width: 300px;
-       overflow: hidden;
-       float: left;
-       border: thin solid #333;
-       }
-      #capture {
-       height: 360px;
-       width: 480px;
-       overflow: hidden;
-       float: left;
-       background-color: #ECECFB;
-       border: thin solid #333;
-       border-left: none;
-       }
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
-    <div id="capture"></div>
-    <script>
-      var map;
-      var src = 'https://www.nhc.noaa.gov/storm_graphics/api/AL122022_007adv_TRACK.kmz';
+<head>
+<meta charset="utf-8">
+<title>Load data from an external GeoJSON file</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+<div id="map"></div>
 
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: new google.maps.LatLng(-19.257753, 146.823688),
-          zoom: 2,
-          mapTypeId: 'terrain'
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiYm1jY2FyZGxlIiwiYSI6ImNqOG91YXlxbTA3emIyd3JzYjVra2lhMWYifQ.mIhEepOm5uN8lbMtC6ZR9A';
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        style: 'mapbox://styles/mapbox/satellite-v9', // style URL
+        zoom: 2, // starting zoom
+        center: [108, 4], // // starting center in [lng, lat]
+        
+    });
+  
+  function translateData(){
+    
+   // https://www.nhc.noaa.gov/CurrentStorms.json
+    
+    fetch('https://www.nhc.noaa.gov/CurrentStorms.json')
+    .then(res => res.json())
+    .then((out) => {
+        console.log('Output: ', out);
+}).catch(err => console.error(err));
+    
+    
+    
+  }
+  
+  translateData()
+
+    map.on('style.load', () => {
+        map.setFog({}); // enable atmosphere and stars
+    });
+
+    map.on('load', () => {
+        map.addSource('earthquakes', {
+            type: 'geojson',
+            // Use a URL for the value for the `data` property.
+            data: 'https://mygeodata.cloud/api/dl/ssd1/2022-10-07T18-42-15_beQh5'
         });
 
-        var kmlLayer = new google.maps.KmlLayer(src, {
-          suppressInfoWindows: true,
-          preserveViewport: false,
-          map: map
+        map.addLayer({
+            'id': 'earthquakes-layer',
+            'type': 'circle',
+            'source': 'earthquakes',
+            'paint': {
+                'circle-radius': 4,
+                'circle-stroke-width': 2,
+                'circle-color': 'red',
+                'circle-stroke-color': 'white'
+            }
         });
-        kmlLayer.addListener('click', function(event) {
-          var content = event.featureData.infoWindowHtml;
-          var testimonial = document.getElementById('capture');
-          testimonial.innerHTML = content;
-        });
-      }
-    </script>
-   <script async
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk&callback=initMap">
+    });
 </script>
-  </body>
+
+</body>
 </html>
