@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Load data from an external GeoJSON file</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+
+
+</head>
+<body>
+<div id="map"></div>
+
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiYm1jY2FyZGxlIiwiYSI6ImNqOG91YXlxbTA3emIyd3JzYjVra2lhMWYifQ.mIhEepOm5uN8lbMtC6ZR9A';
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        style: 'mapbox://styles/mapbox/satellite-v9', // style URL
+        zoom: 2, // starting zoom
+        center: [108, 4], // // starting center in [lng, lat]
+        
+    });
+  
+
+ 
+
+fetch('https://www.nhc.noaa.gov/CurrentStorms.json', {
+  credentials: 'omit',
+ headers: {
+    'Content-Type': 'application/json',
+  }
+})
+.then(res => res.json())
+    .then((out) => {
+        console.log('Output: ', out);
+}).catch(err => console.error(err));
+
+    
+  
+  
+
+    map.on('style.load', () => {
+        map.setFog({}); // enable atmosphere and stars
+    });
+
+    map.on('load', () => {
+
+        map.addSource('earthquakes', {
+            type: 'geojson',
+            // Use a URL for the value for the `data` property.
+            data: 'https://mygeodata.cloud/api/dl/ssd1/2022-10-07T18-42-15_beQh5'
+        });
+
+        map.addLayer({
+            'id': 'earthquakes-layer',
+            'type': 'circle',
+            'source': 'earthquakes',
+            'paint': {
+                'circle-radius': 4,
+                'circle-stroke-width': 2,
+                'circle-color': 'red',
+                'circle-stroke-color': 'white'
+            }
+        });
+    });
+
+
+</script>
+
+</body>
+</html>

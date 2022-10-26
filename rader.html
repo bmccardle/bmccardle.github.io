@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	
+	<link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+
+<body>
+	
+	<div id="map"></div>
+		
+	<script>
+
+mapboxgl.accessToken = 'pk.eyJ1Ijoicm9uaS1zaGFsZXYiLCJhIjoiY2thaDEzdGwyMDN1ejJzdGl5Z3Nhems1ZCJ9.C36_Th7LAixAB1t6WHodMw';
+
+// get your key from app.tomorrow.io/development/keys
+const API_KEY = '85RE2BsHl8L3mnQDj6ONPj7wtaYWXIaT'; 
+
+// pick the field (like temperature, precipitationIntensity or cloudCover)
+const DATA_FIELD = 'precipitationIntensity';
+
+// set the ISO timestamp (now for all fields, up to 6 hour out for precipitationIntensity)
+const TIMESTAMP = (new Date()).toISOString();
+
+// initialize the map
+var map = (window.map = new mapboxgl.Map({
+  container: 'map',
+  zoom: 3,
+  center: [7.5, 58],
+  style: 'mapbox://styles/mapbox/light-v10',
+  antialias: true
+}));
+
+// inject the tile layer
+map.on('load', function() {
+  map.addSource('tomorrow-io-api', {
+    "type": 'raster',
+    "tiles": [`https://api.tomorrow.io/v4/map/tile/{z}/{x}/{y}/${DATA_FIELD}/${TIMESTAMP}.png?apikey=${API_KEY}`],
+    "tileSize": 256,
+    "attribution": '&copy; <a href="https://www.tomorrow.io/weather-api">Powered by Tomorrow.io</a>'
+  });
+  map.addLayer({
+    "id": "radar-tiles",
+    "type": "raster",
+    "source": "tomorrow-io-api",
+    "minzoom": 1,
+    "maxzoom": 12
+  });
+  // Add geolocate control to the map.
+map.addControl(
+new mapboxgl.GeolocateControl({
+positionOptions: {
+enableHighAccuracy: true
+},
+// When active the map will receive updates to the device's location as it changes.
+trackUserLocation: true,
+// Draw an arrow next to the location dot to indicate which direction the device is heading.
+showUserHeading: true
+})
+);
+});
+
+</script>	
+
+</body>
+</html>
+
