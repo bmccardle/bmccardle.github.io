@@ -162,6 +162,26 @@ body { margin: 0; padding: 0; }
             'waterway-label'
         );
     });
+	
+	map.on('click', (event) => {
+const features = map.queryRenderedFeatures(event.point, {
+layers: ['earthquakes']
+});
+if (!features.length) {
+return;
+}
+const feature = features[0];
+
+console.log(features)
+ 
+const popup = new mapboxgl.Popup({ offset: [0, -15] })
+.setLngLat(feature.geometry.coordinates)
+.setHTML(
+`<h3>${feature.properties.name}</h3><p>${feature.properties.stars}</p>`
+)
+.addTo(map);
+});
+
 </script>
 
 </body>
