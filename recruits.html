@@ -326,14 +326,14 @@ const popup = new mapboxgl.Popup({ offset: [0, -15] })
 	
 	 map.on('movestart', () => {
             // reset features filter as the map starts moving
-            map.setFilter('earthquakes-point', ['has', 'committedTo']);
+            map.setFilter('earthquakes-point', ['has', 'city']);
         });
 
         map.on('moveend', () => {
             const features = map.queryRenderedFeatures({ layers: ['earthquakes-point'] });
 
             if (features) {
-                const uniqueFeatures = getUniqueFeatures(features, 'committedTo');
+                const uniqueFeatures = getUniqueFeatures(features, 'city');
                 // Populate features for the listing overlay.
                 renderListings(uniqueFeatures);
 
@@ -385,7 +385,7 @@ const popup = new mapboxgl.Popup({ offset: [0, -15] })
             if (filtered.length) {
                 map.setFilter('earthquakes-point', [
                     'match',
-                    ['get', 'committedTo'],
+                    ['get', 'city'],
                     filtered.map((feature) => {
                         return feature.properties.abbrev;
                     }),
