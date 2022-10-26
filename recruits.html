@@ -305,7 +305,7 @@ body { margin: 0; padding: 0; }
         );
     });
 	
-	map.on('click',  (event) => {
+	/*map.on('click',  (event) => {
 const features = map.queryRenderedFeatures(event.point, {
 layers: ['earthquakes-point']
 });
@@ -322,7 +322,7 @@ const popup = new mapboxgl.Popup({ offset: [0, -15] })
 `<h3>${feature.properties.name}</h3><p>${feature.properties.stars}</p>`
 )
 .addTo(map);
-});
+});*/
 	
 	 map.on('movestart', () => {
             // reset features filter as the map starts moving
