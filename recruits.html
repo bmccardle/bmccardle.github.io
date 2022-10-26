@@ -165,7 +165,7 @@ body { margin: 0; padding: 0; }
 	
 	map.on('click', (event) => {
 const features = map.queryRenderedFeatures(event.point, {
-layers: ['earthquakes']
+layers: ['earthquakes-point']
 });
 if (!features.length) {
 return;
