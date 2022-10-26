@@ -388,7 +388,7 @@ const popup = new mapboxgl.Popup({ offset: [0, -15] })
                     'match',
                     ['get', 'city'],
                     filtered.map((feature) => {
-                        return feature.properties.abbrev;
+                        return feature.properties.city;
                     }),
                     true,
                     false
