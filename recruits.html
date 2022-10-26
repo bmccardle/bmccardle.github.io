@@ -118,7 +118,7 @@ body { margin: 0; padding: 0; }
         if (features.length) {
             for (const feature of features) {
                 const itemLink = document.createElement('a');
-                const label = `${feature.properties.name} (${feature.properties.abbrev})`;
+                const label = `${feature.properties.name} (${feature.properties.city})`;
                 itemLink.href = feature.properties.wikipedia;
                 itemLink.target = '_blank';
                 itemLink.textContent = label;
