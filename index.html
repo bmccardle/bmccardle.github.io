@@ -1,110 +1,145 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
+.w3-sidebar {
+  z-index: 3;
+  width: 250px;
+  top: 43px;
+  bottom: 0;
+  height: inherit;
+}
 
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
 
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
 
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
 
+</style>
 </head>
 <body>
 
-<div style="width:950px;">
-<canvas id="bar-chart" width="800" height="450"></canvas>
-
-<canvas id="pie-chart" width="800" height="450"></canvas>
-
-<p id="demo"></p>
+<div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a href="#news">News</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
 </div>
 
+<form>
+<b> Select Poll</b>
+<br>
+<select id = "selectPoll" class = "selectPoll" onchange = "getSelectedPoll()" >
+
+<!--<option> Coaches Poll </option>
+<option> Javatpoint </option>
+<option> tutorialspoint </option>
+<option> geeksforgeeks </option>-->
+</select>
+<p> Your selected tutorial site is: 
+<input type = "text" id = "favourite" size = "20" </p>
+</form>
+
+
+
+
+
+  <div class="w3-row w3-padding-64">
+    <div class="w3-twothird w3-container">
+      <h1 class="w3-text-black">Heading</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum
+        dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+   
+  </div>
+
+
+
+  <div class="w3-row w3-padding-64">
+    <div class="w3-twothird w3-container">
+      <h1 class="w3-text-teal">Heading</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum
+        dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <div class="w3-third w3-container">
+      <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
+      <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="w3-center w3-padding-32">
+    <div class="w3-bar">
+      <a class="w3-button w3-black" href="#">1</a>
+      <a class="w3-button w3-hover-black" href="#">2</a>
+      <a class="w3-button w3-hover-black" href="#">3</a>
+      <a class="w3-button w3-hover-black" href="#">4</a>
+      <a class="w3-button w3-hover-black" href="#">5</a>
+      <a class="w3-button w3-hover-black" href="#">»</a>
+    </div>
+  </div>
+
+  <footer id="myFooter">
+    <div class="w3-container w3-theme-l2 w3-padding-32">
+      <h4>Footer</h4>
+    </div>
+
+    <div class="w3-container w3-theme-l1">
+      <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+    </div>
+  </footer>
+
+<!-- Javasctipt -->
+<script src="./js/fetch.js"></script>
 <script>
-
-function dynamicColors() {
-    var r = Math.floor(Math.random() * 255);
-    var g = Math.floor(Math.random() * 255);
-    var b = Math.floor(Math.random() * 255);
-    return "rgba(" + r + "," + g + "," + b + ", 0.5)";
-}
-
-function poolColors(a) {
-    var pool = [];
-    for(i = 0; i < a; i++) {
-        pool.push(dynamicColors());
-    }
-    return pool;
-}
-// Bar chart
-new Chart(document.getElementById("bar-chart"), {
-    type: 'bar',
-    data: {
-      labels: ['BG1','BG2','BG3','BK1','BK2','BK3','BK5','BL1','BL2','BN1','BN2','BN3','BN4','BN5','BPI','CIN','CMT','DGR','ECP','F41','G15','CG1','GK1','GK2','GP1','GP2','GP3','GRD','GY1','GY2','GY3','GY4','GY5','HPY','JNS','MED','PGF','PK1','PO1','PO2','PO3','PO4','PO5','PRO','PST','RD','RS1','SKF','SKR','SKS','SOL','SPT','STN'],
-      datasets: [
-        {
-          label: "Color Totals",
-          backgroundColor: poolColors(600),
-          data: [0.3045912653975364,0.393057110862262,0.9697648376259799,0.020156774916013438,0.011198208286674134,0.17469204927211646,0.0022396416573348264,0.1881298992161254,0.01455767077267637,0.7536394176931691,0.5072788353863382,2.3784994400895854,0.010078387458006719,0.01791713325867861,0.06270996640537514,0.18589025755879057,14.793952967525195,0.39417693169092943,3.923852183650616,0.1702127659574468,0.5531914893617021,0,0.0022396416573348264,0.00671892497200448,0.004479283314669653,0.0022396416573348264,0.011198208286674134,14.35946248600224,1.2150055991041433,0.8577827547592386,8.761478163493841,0.03471444568868981,0.043673012318029114,0.0011198208286674132,0.1590145576707727,0.09182530795072788,0.048152295632698766,0.13101903695408734,0.0167973124300112,0.008958566629339306,0.20044792833146693,0,0.004479283314669653,0,0.051511758118701005,0,0.23292273236282193,0.11646136618141097,0.1634938409854423,0.08734602463605823,39.08510638297872,0.1265397536394177,0.11086226203807391]
-        }
-      ]
-    },
-    options: {
-      legend: { display: true },
-      title: {
-        display: true,
-        text: 'Tint Totals'
-      },
-        scales: {
-        yAxes: [{
-            display: true,
-            ticks: {
-                beginAtZero: true,
-                max: 40,
-                min: 0
-            }
-        }]
-    },      
-    }
-});
+getSelectedPoll();
+</script>
+<script>
+renderRankings();
 </script>
 
-<script>
+<!--<script>
+window.setInterval(function(){
 
-function dynamicColors() {
-    var r = Math.floor(Math.random() * 255);
-    var g = Math.floor(Math.random() * 255);
-    var b = Math.floor(Math.random() * 255);
-    return "rgba(" + r + "," + g + "," + b + ", 0.5)";
-}
+renderLive()
 
-function poolColors(a) {
-    var pool = [];
-    for(i = 0; i < a; i++) {
-        pool.push(dynamicColors());
-    }
-    return pool;
-}
-// Bar chart
-new Chart(document.getElementById("pie-chart"), {
-    type: 'pie',
-    data: {
-      labels: ['BG1','BG2','BG3','BK1','BK2','BK3','BK5','BL1','BL2','BN1','BN2','BN3','BN4','BN5','BPI','CIN','CMT','DGR','ECP','F41','G15','CG1','GK1','GK2','GP1','GP2','GP3','GRD','GY1','GY2','GY3','GY4','GY5','HPY','JNS','MED','PGF','PK1','PO1','PO2','PO3','PO4','PO5','PRO','PST','RD','RS1','SKF','SKR','SKS','SOL','SPT','STN'],
-      datasets: [
-        {
-          label: "Color Totals",
-          backgroundColor: poolColors(600),
-          data: [0.3045912653975364,0.393057110862262,0.9697648376259799,0.020156774916013438,0.011198208286674134,0.17469204927211646,0.0022396416573348264,0.1881298992161254,0.01455767077267637,0.7536394176931691,0.5072788353863382,2.3784994400895854,0.010078387458006719,0.01791713325867861,0.06270996640537514,0.18589025755879057,14.793952967525195,0.39417693169092943,3.923852183650616,0.1702127659574468,0.5531914893617021,0,0.0022396416573348264,0.00671892497200448,0.004479283314669653,0.0022396416573348264,0.011198208286674134,14.35946248600224,1.2150055991041433,0.8577827547592386,8.761478163493841,0.03471444568868981,0.043673012318029114,0.0011198208286674132,0.1590145576707727,0.09182530795072788,0.048152295632698766,0.13101903695408734,0.0167973124300112,0.008958566629339306,0.20044792833146693,0,0.004479283314669653,0,0.051511758118701005,0,0.23292273236282193,0.11646136618141097,0.1634938409854423,0.08734602463605823,39.08510638297872,0.1265397536394177,0.11086226203807391]
-        }
-      ]
-    },
-    options: {
-      legend: { display: false },
-      title: {
-        display: true,
-        text: 'Tint Totals'
-      }      
-    }
-});
+}, 60000);
+
 </script>
+-->
 
+<!-- end javascript -->
 
 </body>
-<html>
+</html>
