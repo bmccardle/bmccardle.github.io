@@ -185,13 +185,13 @@ async function renderLive(){
 let scores = await getLiveScores();
     let html = '';
     
-  var scheduled = scores.filter(function(schedule){
+  /*var scheduled = scores.filter(function(schedule){
     
     return schedule.status == "complete"
     
   })
     
-   console.log(scheduled)
+   console.log(scheduled)*/
    let date = new Date()
    
   
