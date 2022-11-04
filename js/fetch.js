@@ -5,8 +5,9 @@
       "method": "GET",
       mode: 'cors',
       "headers": {
-            "Authorization": "Bearer 6JZyHQXvTYAqYotH6T9fm5cho1pJjCWA9typXgprvolqFVkMpdbcmCTss8Czixco",
-            'Access-Control-Allow-Origin':'*'
+      'Access-Control-Allow-Origin':'*',
+            "Authorization": "Bearer 6JZyHQXvTYAqYotH6T9fm5cho1pJjCWA9typXgprvolqFVkMpdbcmCTss8Czixco"
+            
       }
      
       
