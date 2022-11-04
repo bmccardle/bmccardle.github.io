@@ -152,7 +152,7 @@ let container = document.querySelector('.form-group2');
     */
 
  async function getLiveScores() {
-    let url = 'https://api.collegefootballdata.com/scoreboard';
+    let url = 'https://cors.io/?https://api.collegefootballdata.com/scoreboard';
     try {
         let res = await fetch(url, {
       "method": "GET",
