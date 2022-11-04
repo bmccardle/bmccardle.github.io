@@ -1,5 +1,5 @@
  async function getRankings() {
-    let url = 'https://thingproxy.freeboard.io/fetch/https://api.collegefootballdata.com/rankings?year=2022&week=10';
+    let url = 'https://api.collegefootballdata.com/rankings?year=2022&week=10';
     try {
         let res = await fetch(url, {
       "method": "GET",
