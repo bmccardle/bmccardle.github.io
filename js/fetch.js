@@ -29,7 +29,7 @@ async function renderRankings() {
   let rankings = await getRankings();
   let html = '';
   
-  //console.log(rankings.polls)
+  console.log(rankings)
   rankings.forEach(rank => {
   
     
